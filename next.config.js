@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // Required for Firebase Hosting
+  // NOTE: output: 'export' is commented out because it's incompatible with API routes
+  // Uncomment only after migrating all API routes to Firebase Functions
+  // output: 'export',
   images: {
-    unoptimized: true, // Firebase Hosting doesn't support Next.js Image Optimization
     remotePatterns: [
       {
         protocol: 'https',
@@ -17,9 +18,7 @@ const nextConfig = {
         hostname: '*.googleapis.com', // For Firebase Storage
       },
     ]
-  },
-  // Disable API routes for static export
-  // You'll need to use Firebase Functions or client-side Firebase SDK instead
+  }
 }
 
 module.exports = nextConfig
